@@ -1,6 +1,6 @@
 {
-  "name": "kad-localstorage",
-  "version": "0.0.7",
+  "name": "kad-localstorage-js",
+  "version": "0.0.8",
   "description": "An interface to localStorage for kad",
   "main": "kad-localstorage.js",
   "scripts": {
@@ -46,6 +46,7 @@
     "zuul": "^3.6.0"
   },
   "dependencies": {
+    "async.util.setimmediate": "^0.5.2",
     "dom-storage": "^2.0.1"
   }
 }
