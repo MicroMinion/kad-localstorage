@@ -16,11 +16,15 @@ KadLocalStorage.prototype.get = function (key, cb) {
   var val = localStorage.getItem(this._prefix + key)
   if (!val) {
     setImmediate(function () {
-      cb(new Error('key not found: ' + key))
+      if (cb) {
+        cb(new Error('key not found: ' + key))
+      }
     })
   } else {
     setImmediate(function () {
-      cb(null, val)
+      if (cb) {
+        cb(null, val)
+      }
     })
   }
 }
@@ -29,7 +33,9 @@ KadLocalStorage.prototype.put = function (key, val, cb) {
   key = this._prefix + key
   localStorage.setItem(key, val)
   setImmediate(function () {
-    cb(null, localStorage[key])
+    if (cb) {
+      cb(null)
+    }
   })
 }
 
@@ -37,7 +43,9 @@ KadLocalStorage.prototype.del = function (key, cb) {
   key = this._prefix + key
   localStorage.removeItem(key)
   setImmediate(function () {
-    cb(null)
+    if (cb) {
+      cb(null)
+    }
   })
 }
 
